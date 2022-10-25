@@ -8,7 +8,7 @@ import it.prova.gestionepropietari.model.Automobile;
 
 public interface AutomobileService {
 
-	public List<Automobile> listAllAbitanti() throws Exception;
+	public List<Automobile> listAllAutomobili() throws Exception;
 
 	public Automobile caricaSingolaAutomobile(Long id) throws Exception;
 
@@ -16,12 +16,12 @@ public interface AutomobileService {
 
 	public void inserisciNuovo(Automobile automobileInstance) throws Exception;
 
-	public void rimuovi(Long idAutomobileInstance) throws Exception;
+	public void rimuovi(Automobile automobileInstance) throws Exception;
+	
+	public List<Automobile> listaAutomobiliProprietariCodiceFiscaleIniziaCon(String input) throws Exception;
+	
+	public List<Automobile> listaAllErrori() throws Exception;
 	
 	
-	
-	//#############################
-	
-	
-	public void setAbitanteDAO(AutomobileDAO automobileDAO);
+	public void setAutomobileDAO(AutomobileDAO automobileDAO);
 }

@@ -3,6 +3,7 @@ package it.prova.gestionepropietari.dao.automobile;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import it.prova.gestionepropietari.model.Automobile;
 
@@ -55,4 +56,22 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 
 	}
 
+	@Override
+	public List<Automobile> giveAutomobiliProprietariWhoseCodiceStartWhit(String input) throws Exception {
+		if (input == null) {
+			throw new Exception("Problema valore in input");
+		}
+		TypedQuery<Automobile> query = entityManager.createQuery(
+				"from Automobile a left join fetch a.propietario where codicefiscale like ?1", Automobile.class);
+		query.setParameter(1, input + "%");
+
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Automobile> allAutomobiliWhitErrors() throws Exception {
+		TypedQuery<Automobile> query = entityManager.createQuery(
+				"from Automobile a left join fetch a.propietario where year(current_date()) - year(datadinascita) <= 18", Automobile.class);
+		return query.getResultList();
+	}
 }

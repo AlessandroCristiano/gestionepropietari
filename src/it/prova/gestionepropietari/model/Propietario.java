@@ -1,6 +1,6 @@
 package it.prova.gestionepropietari.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,12 +25,14 @@ public class Propietario {
 	private String nome;
 	@Column(name = "cognome")
 	private String cognome;
-	@Column(name = "codiceFiscale")
+	@Column(name = "codicefiscale")
 	private String codiceFiscale;
-	@Column(name = "dataDiNascita")
+	@Column(name = "datadinascita")
 	private Date dataDiNascita;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "propietario")
 	private Set<Automobile> automobili = new HashSet<>();
+	
+	
 
 	public Propietario() {
 		super();
@@ -60,6 +62,15 @@ public class Propietario {
 	public Propietario(Long id, String nome, String cognome, String codiceFiscale, Date dataDiNascita) {
 		super();
 		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.dataDiNascita = dataDiNascita;
+	}
+	
+
+	public Propietario(String nome, String cognome, String codiceFiscale, Date dataDiNascita) {
+		super();
 		this.nome = nome;
 		this.cognome = cognome;
 		this.codiceFiscale = codiceFiscale;
@@ -117,6 +128,6 @@ public class Propietario {
 	@Override
 	public String toString() {
 		return "Propietario [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale
-				+ ", dataDiNascita=" + dataDiNascita + ", automobili=" + automobili + "]";
+				+ ", dataDiNascita=" + dataDiNascita + "]";
 	}
 }

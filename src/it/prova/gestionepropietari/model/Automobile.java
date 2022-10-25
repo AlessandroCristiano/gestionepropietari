@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.sql.Date;
+
 
 @Entity
 @Table(name = "automobile")
@@ -25,11 +25,11 @@ public class Automobile {
 	private String modello;
 	@Column(name = "targa")
 	private String targa;
-	@Column(name = "annoImmatricolazione")
-	private Date annoImmatricolazione;
+	@Column(name = "annoimmatricolazione")
+	private Integer annoImmatricolazione;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "proprietario_id")
-	private Propietario proprietario;
+	@JoinColumn(name = "propietario_id")
+	private Propietario propietario;
 	
 	
 	public Automobile() {
@@ -37,19 +37,19 @@ public class Automobile {
 	}
 
 	
-	public Automobile(Long id, String marca, String modello, String targa, Date annoImmatricolazione,
-			Propietario proprietario) {
+	public Automobile(Long id, String marca, String modello, String targa, Integer annoImmatricolazione,
+			Propietario propietario) {
 		super();
 		this.id = id;
 		this.marca = marca;
 		this.modello = modello;
 		this.targa = targa;
 		this.annoImmatricolazione = annoImmatricolazione;
-		this.proprietario = proprietario;
+		this.propietario = propietario;
 	}
 
 
-	public Automobile(Long id, String marca, String modello, String targa, Date annoImmatricolazione) {
+	public Automobile(Long id, String marca, String modello, String targa, Integer annoImmatricolazione) {
 		super();
 		this.id = id;
 		this.marca = marca;
@@ -59,7 +59,7 @@ public class Automobile {
 	}
 
 
-	public Automobile(String marca, String modello, String targa, Date annoImmatricolazione) {
+	public Automobile(String marca, String modello, String targa, Integer annoImmatricolazione) {
 		super();
 		this.marca = marca;
 		this.modello = modello;
@@ -108,29 +108,29 @@ public class Automobile {
 	}
 
 
-	public Date getAnnoImmatricolazione() {
+	public Integer getAnnoImmatricolazione() {
 		return annoImmatricolazione;
 	}
 
 
-	public void setAnnoImmatricolazione(Date annoImmatricolazione) {
+	public void setAnnoImmatricolazione(Integer annoImmatricolazione) {
 		this.annoImmatricolazione = annoImmatricolazione;
 	}
 
 
-	public Propietario getProprietario() {
-		return proprietario;
+	public Propietario getPropietario() {
+		return propietario;
 	}
 
 
-	public void setProprietario(Propietario proprietario) {
-		this.proprietario = proprietario;
+	public void setPropietario(Propietario propietario) {
+		this.propietario = propietario;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Automobile [id=" + id + ", marca=" + marca + ", modello=" + modello + ", targa=" + targa
-				+ ", annoImmatricolazione=" + annoImmatricolazione + ", proprietario=" + proprietario + "]";
+				+ ", annoImmatricolazione=" + annoImmatricolazione + "]";
 	}
 }
